@@ -932,7 +932,7 @@ extern zipFile ZEXPORT xlsxzipOpen2 (const char *pathname, int append, zipcharpc
         return xlsxzipOpen3(pathname, append, globalcomment, NULL);
 }
 
-extern zipFile ZEXPORT xslxzipOpen2_64 (const void *pathname, int append, zipcharpc* globalcomment, zlib_filefunc64_def* pzlib_filefunc_def)
+extern zipFile ZEXPORT xlsxzipOpen2_64 (const void *pathname, int append, zipcharpc* globalcomment, zlib_filefunc64_def* pzlib_filefunc_def)
 {
     if (pzlib_filefunc_def != NULL)
     {

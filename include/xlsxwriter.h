@@ -10,8 +10,8 @@
  * xlsxwriter - A library for creating Excel XLSX files.
  *
  */
-#ifndef __LXW_XLSXWRITER_H__
-#define __LXW_XLSXWRITER_H__
+#ifndef LXW_XLSXWRITER_H__
+#define LXW_XLSXWRITER_H__
 
 #include "xlsxwriter/workbook.h"
 #include "xlsxwriter/worksheet.h"

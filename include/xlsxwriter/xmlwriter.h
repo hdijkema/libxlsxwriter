@@ -16,8 +16,8 @@
  * called directly by the end user.
  *
  */
-#ifndef __XMLWRITER_H__
-#define __XMLWRITER_H__
+#ifndef XMLWRITER_H__
+#define XMLWRITER_H__
 
 #include <stdio.h>
 #include <stdlib.h>

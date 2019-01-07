@@ -25,8 +25,6 @@
 #define INVALID_SET_FILE_POINTER ((DWORD)-1)
 #endif
 
-
-
 voidpf  ZCALLBACK win32_open_file_func  OF((voidpf opaque, const char* filename, int mode));
 uLong   ZCALLBACK win32_read_file_func  OF((voidpf opaque, voidpf stream, void* buf, uLong size));
 uLong   ZCALLBACK win32_write_file_func OF((voidpf opaque, voidpf stream, const void* buf, uLong size));
