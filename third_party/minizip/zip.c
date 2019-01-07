@@ -43,7 +43,6 @@
 
 #ifndef local
 #  define local static
-#  pragma message "static"
 #endif
 /* compile with -Dlocal if your debugger can't find static symbols */
 

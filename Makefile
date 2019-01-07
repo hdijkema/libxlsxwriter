@@ -19,6 +19,9 @@ PYTEST ?= py.test
 
 # Build the libs.
 all :
+ifndef V
+	make V=verbose
+endif
 ifndef USE_SYSTEM_MINIZIP
 	$(Q)$(MAKE) -C third_party/minizip
 endif
