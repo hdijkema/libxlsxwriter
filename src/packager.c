@@ -67,7 +67,7 @@ _open_zipfile_win32(const char *filename)
     /* Use the native Win32 file handling functions with minizip. */
     fill_win32_filefunc64W(&filefunc);
 
-    return zipOpen2_64(wide_filename, 0, NULL, &filefunc);
+    return xlsxzipOpen2_64(wide_filename, 0, NULL, &filefunc);
 }
 
 #endif
@@ -105,7 +105,7 @@ lxw_packager_new(const char *filename, char *tmpdir)
 #ifdef _WIN32
     packager->zipfile = _open_zipfile_win32(packager->filename);
 #else
-    packager->zipfile = zipOpen(packager->filename, 0);
+    packager->zipfile = xlsxzipOpen(packager->filename, 0);
 #endif
 
     if (packager->zipfile == NULL)
@@ -1018,7 +1018,7 @@ _add_file_to_zip(lxw_packager *self, FILE * file, const char *filename)
     int16_t error = ZIP_OK;
     size_t size_read;
 
-    error = zipOpenNewFileInZip4_64(self->zipfile,
+    error = xlsxzipOpenNewFileInZip4_64(self->zipfile,
                                     filename,
                                     &self->zipfile_info,
                                     NULL, 0, NULL, 0, NULL,
@@ -1045,7 +1045,7 @@ _add_file_to_zip(lxw_packager *self, FILE * file, const char *filename)
             }
         }
 
-        error = zipWriteInFileInZip(self->zipfile,
+        error = xlsxzipWriteInFileInZip(self->zipfile,
                                     self->buffer, (unsigned int) size_read);
 
         if (error < 0) {
@@ -1060,7 +1060,7 @@ _add_file_to_zip(lxw_packager *self, FILE * file, const char *filename)
         RETURN_ON_ZIP_ERROR(error, LXW_ERROR_ZIP_FILE_ADD);
     }
     else {
-        error = zipCloseFileInZip(self->zipfile);
+        error = xlsxzipCloseFileInZip(self->zipfile);
         if (error != ZIP_OK) {
             LXW_ERROR("Error in closing member in the zipfile");
             RETURN_ON_ZIP_ERROR(error, LXW_ERROR_ZIP_FILE_ADD);
@@ -1076,7 +1076,7 @@ _add_buffer_to_zip(lxw_packager *self, unsigned char *buffer,
 {
     int16_t error = ZIP_OK;
 
-    error = zipOpenNewFileInZip4_64(self->zipfile,
+    error = xlsxzipOpenNewFileInZip4_64(self->zipfile,
                                     filename,
                                     &self->zipfile_info,
                                     NULL, 0, NULL, 0, NULL,
@@ -1089,7 +1089,7 @@ _add_buffer_to_zip(lxw_packager *self, unsigned char *buffer,
         RETURN_ON_ZIP_ERROR(error, LXW_ERROR_ZIP_FILE_ADD);
     }
 
-    error = zipWriteInFileInZip(self->zipfile,
+    error = xlsxzipWriteInFileInZip(self->zipfile,
                                 buffer, (unsigned int) buffer_size);
 
     if (error < 0) {
@@ -1101,7 +1101,7 @@ _add_buffer_to_zip(lxw_packager *self, unsigned char *buffer,
         RETURN_ON_ZIP_ERROR(error, LXW_ERROR_ZIP_FILE_ADD);
     }
     else {
-        error = zipCloseFileInZip(self->zipfile);
+        error = xlsxzipCloseFileInZip(self->zipfile);
         if (error != ZIP_OK) {
             LXW_ERROR("Error in closing member in the zipfile");
             RETURN_ON_ZIP_ERROR(error, LXW_ERROR_ZIP_FILE_ADD);
@@ -1174,7 +1174,7 @@ lxw_create_package(lxw_packager *self)
     error = _write_root_rels_file(self);
     RETURN_ON_ERROR(error);
 
-    zip_error = zipClose(self->zipfile, NULL);
+    zip_error = xlsxzipClose(self->zipfile, NULL);
     if (zip_error) {
         RETURN_ON_ZIP_ERROR(zip_error, LXW_ERROR_ZIP_CLOSE);
     }

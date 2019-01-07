@@ -522,7 +522,7 @@ FILE *
 lxw_tmpfile(char *tmpdir)
 {
 #ifndef USE_STANDARD_TMPFILE
-    return tmpfileplus(tmpdir, NULL, NULL, 0);
+    return xlsxtmpfileplus(tmpdir, NULL, NULL, 0);
 #else
     (void) tmpdir;
     return tmpfile();

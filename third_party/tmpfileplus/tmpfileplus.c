@@ -263,7 +263,7 @@ static FILE *mktempfile_internal(const char *tmpdir, const char *pfx, char **tmp
 /* EXPORTED FUNCTIONS */
 /**********************/
 
-FILE *tmpfileplus(const char *dir, const char *prefix, char **pathname, int keep)
+FILE *xlsxtmpfileplus(const char *dir, const char *prefix, char **pathname, int keep)
 {
 	FILE *fp = NULL;
 	char *tmpname = NULL;
@@ -312,17 +312,17 @@ FILE *tmpfileplus(const char *dir, const char *prefix, char **pathname, int keep
 }
 
 /* Same as tmpfileplus() but with fixed length buffer for output filename and no memory allocation */
-FILE *tmpfileplus_f(const char *dir, const char *prefix, char *pathnamebuf, size_t pathsize, int keep)
+FILE *xlsxtmpfileplus_f(const char *dir, const char *prefix, char *pathnamebuf, size_t pathsize, int keep)
 {
 	char *tmpbuf = NULL;
 	FILE *fp;
 
 	/* If no buffer provided, do the normal way */
 	if (!pathnamebuf || (int)pathsize <= 0) {
-		return tmpfileplus(dir, prefix, NULL, keep);
+		return xlsxtmpfileplus(dir, prefix, NULL, keep);
 	}
 	/* Call with a temporary buffer */
-	fp = tmpfileplus(dir, prefix, &tmpbuf, keep);
+	fp = xlsxtmpfileplus(dir, prefix, &tmpbuf, keep);
 	if (fp && strlen(tmpbuf) > pathsize - 1) {
 		/* Succeeded but not enough room in output buffer, so clean up and return an error */
 		pathnamebuf[0] = 0;

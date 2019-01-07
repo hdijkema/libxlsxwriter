@@ -24,6 +24,7 @@ endif
 
 FPIC = -fPIC
 CFLAGS += -O3 -DNOCRYPT -DNOUNCRYPT
+#CFLAGS += -g -O3 -DNOCRYPT -DNOUNCRYPT
 
 # Change make options on MinGW/MinGW64/Cygwin.
 ifdef MING_LIKE

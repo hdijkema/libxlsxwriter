@@ -33,7 +33,7 @@
 @return Pointer to stream opened in binary read/write (w+b) mode, or a null pointer on error.
 @exception ENOMEM Not enough memory to allocate filename.
 */
-FILE *tmpfileplus(const char *dir, const char *prefix, char **pathname, int keep);
+FILE *xlsxtmpfileplus(const char *dir, const char *prefix, char **pathname, int keep);
 
 
 /** Create a unique temporary file with filename stored in a fixed-length buffer.
@@ -46,7 +46,7 @@ FILE *tmpfileplus(const char *dir, const char *prefix, char **pathname, int keep
 @return Pointer to stream opened in binary read/write (w+b) mode, or a null pointer on error.
 @exception E2BIG Resulting filename is too big for the buffer `pathnamebuf`.
 */
-FILE *tmpfileplus_f(const char *dir, const char *prefix, char *pathnamebuf, size_t pathsize, int keep);
+FILE *xlsxtmpfileplus_f(const char *dir, const char *prefix, char *pathnamebuf, size_t pathsize, int keep);
 
 #define TMPFILE_KEEP 1
 
