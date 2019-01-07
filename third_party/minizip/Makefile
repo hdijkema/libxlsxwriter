@@ -21,6 +21,9 @@ endif
 ifneq (,$(findstring CYGWIN, $(UNAME)))
 MING_LIKE = y
 endif
+ifneq (,$(findstring Darwin, $(UNAME)))
+CFLAGS += -mmacosx-version-min=10.8
+endif
 
 FPIC = -fPIC
 CFLAGS += -O3 -DNOCRYPT -DNOUNCRYPT

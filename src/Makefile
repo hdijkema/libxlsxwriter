@@ -11,6 +11,12 @@ ifdef V
 Q=
 endif
 
+# OS
+UNAME := $(shell uname)
+ifeq ($(UNAME),Darwin)
+CFLAGS += -mmacosx-version-min=10.8
+endif
+
 # Directory variables.
 OBJS_DIR    = .
 INC_DIR     = ../include
